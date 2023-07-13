@@ -7,7 +7,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public UBigNumber capyPoints = new UBigNumber("100000000000000000");
+    public UBigNumber capyPoints = new UBigNumber("0");
     public UBigNumber capyPointsPerSecond = new UBigNumber("0");
     public UBigNumber capyPointsPerTap = new UBigNumber("1");
 
