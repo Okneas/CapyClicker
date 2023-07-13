@@ -91,3 +91,5 @@ MonoBehaviour:
   upgrade: {fileID: 0}
   player: {fileID: 0}
   fill: 0
+  description: {fileID: 2821464147443265533, guid: 07cefe07c6bf55543bead89f383911b8, type: 3}
+  mainCanvas: {fileID: 0}

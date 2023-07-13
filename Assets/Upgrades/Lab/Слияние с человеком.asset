@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e50861d31ec88914787b7da7a3b016a5, type: 3}
   stringPrice: 1000000
-  condition: 0
+  condition: 50
   stringEffectOnTapFromAll: 50
   stringEffectOnTap: 0
   stringEffectOnCapyPerSec: 100
   stringEffectOnCapyPerSecOnItem: 100
-  itemType: 0
+  itemType: 3

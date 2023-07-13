@@ -474,6 +474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &183989289 stripped
@@ -642,6 +646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &283479515 stripped
@@ -680,12 +688,13 @@ RectTransform:
   m_Children:
   - {fileID: 1026811542}
   - {fileID: 645950933}
+  - {fileID: 1307868359}
   m_Father: {fileID: 1916737927}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &320963629
@@ -826,6 +835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &393783735 stripped
@@ -1158,6 +1171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &499464894 stripped
@@ -1242,7 +1259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.78215, y: 19.38, z: -84.6}
+  m_LocalPosition: {x: 1639.04, y: 19.38, z: -84.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1558,6 +1575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &737074017 stripped
@@ -1739,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &824257924 stripped
@@ -2146,6 +2171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &1219482747 stripped
@@ -2248,6 +2277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &1304310187 stripped
@@ -2255,6 +2288,94 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4870559505647768825, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
   m_PrefabInstance: {fileID: 1304310186}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1307868358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307868359}
+  - component: {fileID: 1307868361}
+  - component: {fileID: 1307868360}
+  - component: {fileID: 1307868362}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1307868359
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307868358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 320963628}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -840, y: -433}
+  m_SizeDelta: {x: 184.5262, y: 166.72}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1307868360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307868358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1a99ad25776e9824097cde86593e31be, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1307868361
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307868358}
+  m_CullTransparentMesh: 1
+--- !u!114 &1307868362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307868358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef16ab1e041133439150baea0c10a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1452422110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2549,6 +2670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &1537162407 stripped
@@ -2776,6 +2901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &1739336839 stripped
@@ -3011,6 +3140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &1832674170 stripped
@@ -3154,6 +3287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7158977691753906280, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 1916737930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14cd44acf6fa35a44812fa971b4174fe, type: 3}
 --- !u!224 &1908525559 stripped
@@ -3481,7 +3618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
       propertyPath: AllUpgrades.Array.size
-      value: 9
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
       propertyPath: textCapyPointsPerSecond
@@ -3523,6 +3660,42 @@ PrefabInstance:
       propertyPath: AllUpgrades.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: d796fd270d450384f93d3a43aaa86a50, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1452b0a88219bec45baeef29d18c1b3c, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22a0d09b41115134ebecfaf4255c6335, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: ee8c48a16c0ba904c8444d6e70b09799, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: d754a2d3e335ce74ebd160da8f50b0dd, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3325f76f8db4b5d4db007e84c64e7945, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3d2ffcbd540dbd479478ac286000f28, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 84d70d7d4ca7a5841b0b9634b8a951ec, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: 00406c2db2ea27d4b834831979935635, type: 2}
+    - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
+      propertyPath: AllUpgrades.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: ffd925f32cce12546ae069392d89b44c, type: 2}
     - target: {fileID: 1116638781563497461, guid: d4998920db2ba93488ed50d1bcaf2b6b, type: 3}
       propertyPath: upgradesOfBabyCapy.Array.size
       value: 0

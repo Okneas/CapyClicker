@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: "\u0421\u043B\u0438\u044F\u043D\u0438\u0435 \u043A\u0430\u043F\u0438\u0431\u0440\u0430\u043D\u044B\u0445
     \u043C\u0438\u0440\u043E\u0432"
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  stringPrice: 
-  condition: 0
-  stringEffectOnTapFromAll: 
-  stringEffectOnTap: 
-  stringEffectOnCapyPerSec: 
-  stringEffectOnCapyPerSecOnItem: 
-  itemType: 0
+  icon: {fileID: 21300000, guid: 663961ef45238b546bdb78c7917e1b4a, type: 3}
+  stringPrice: 50000000
+  condition: 25
+  stringEffectOnTapFromAll: 0
+  stringEffectOnTap: 0
+  stringEffectOnCapyPerSec: 100
+  stringEffectOnCapyPerSecOnItem: 100
+  itemType: 5

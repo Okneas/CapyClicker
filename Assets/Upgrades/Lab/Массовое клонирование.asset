@@ -19,4 +19,4 @@ MonoBehaviour:
   stringEffectOnTap: 0
   stringEffectOnCapyPerSec: 100
   stringEffectOnCapyPerSecOnItem: 300
-  itemType: 0
+  itemType: 3
