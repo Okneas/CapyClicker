@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1f762dccc36d64ebfcae97eb3c32ac, type: 3}
+  m_Name: "\u041E\u0437\u0435\u043B\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043B\u0430\u043D\u0435\u0442\u044B"
+  m_EditorClassIdentifier: 
+  id: 26
+  icon: {fileID: 21300000, guid: 8a732f1be8d39d84683c1a49e94ca959, type: 3}
+  stringPrice: 50000000000
+  condition: 75
+  stringEffectOnTapFromAll: 0
+  stringEffectOnTap: 0
+  stringEffectOnCapyPerSec: 50
+  stringEffectOnCapyPerSecOnItem: 50
+  itemType: 2
+  active: 0
+  alreadySet: 0

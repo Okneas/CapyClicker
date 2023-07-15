@@ -4,15 +4,33 @@ using UnityEngine;
 using System.Numerics;
 using System;
 
-public class UBigNumber
+public interface IUBigNumber
+{ 
+    // ћетод, который возвращает значение большого числа в виде строки
+    string ToString();
+
+    // ћетод, который возвращает целочисленную часть числа по индексу
+    int GetNumByIndex(int i);
+
+    // ћетод, который возвращает часть числа с плавающей точкой
+    UBigNumber GetFloatPart();
+
+    // ћетод, который возвращает целую часть числа
+    UBigNumber GetIntPart();
+
+    // ћетод, который преобразует процентное значение в число
+    UBigNumber FromPercentToNum();
+}
+
+public class UBigNumber: IUBigNumber
 {
     public static readonly string[] symbols = { " ", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp" };
-    private List<int> intCheckers = new List<int>();
-    private List<int> floatCheckers = new List<int>();
+    private List<int> intCheckers = new List<int>();// ѕеременна€, котора€ хранит целую часть числа
+    private List<int> floatCheckers = new List<int>();// ѕеременна€, котора€ хранит часть числа с плавающей точкой
 
-    public UBigNumber() { }
+    public UBigNumber() { }//  онструктор, который создает большое целое число с нулевым значением
 
-    public UBigNumber(string num)
+    public UBigNumber(string num)//  онструктор, который создает большое целое число из дес€тичной строки
     {
         bool afterDot = false;
         for (int i = 0; i < num.Length; i++)
@@ -53,13 +71,13 @@ public class UBigNumber
         return res;
     }
 
-    public static UBigNumber operator ++(UBigNumber bigNumber1)
+    public static UBigNumber operator ++(UBigNumber bigNumber1)// ћетод, который увеличивает значение большого числа на 1
     {
         UBigNumber one = new UBigNumber("1");
         return bigNumber1 + one;
     }
 
-    public static UBigNumber operator --(UBigNumber bigNumber1)
+    public static UBigNumber operator --(UBigNumber bigNumber1) // ћетод, который уменьшает значение большого числа на 1
     {
         UBigNumber one = new UBigNumber("1");
         return bigNumber1 - one;
@@ -161,10 +179,6 @@ public class UBigNumber
 
     public static UBigNumber operator *(UBigNumber bigNumber1, UBigNumber bigNumber2)
     {
-        if (bigNumber1 == ConvertToBigNumber(0) || bigNumber2==ConvertToBigNumber(0))
-        {
-            return new UBigNumber("0");
-        }
         UBigNumber num1 = new UBigNumber(bigNumber1.GetIntPart().ToString() + bigNumber1.GetFloatPart().ToString());
         UBigNumber num2 = new UBigNumber(bigNumber2.GetIntPart().ToString() + bigNumber2.GetFloatPart().ToString());
         UBigNumber res = new UBigNumber();
@@ -206,41 +220,52 @@ public class UBigNumber
             res += temp;
             res.UpdateBigNumber();
         }
-        try
+        for (int i = 0; i < numberAfterDot; i++)
         {
-            for (int i = 0; i < numberAfterDot; i++)
+            if ((res.intCheckers.Count - 1) - i < 0)
+            {
+                res.floatCheckers.Add(0);
+            }
+            else
             {
                 res.floatCheckers.Add(res.intCheckers[(res.intCheckers.Count - 1) - i]);
             }
         }
-        catch
-        {
-            Debug.Log($"{numberAfterDot}");
-        }
         res.intCheckers.Reverse();
-        res.intCheckers.RemoveRange(0, numberAfterDot);
+        if (numberAfterDot >= res.intCheckers.Count)
+        {
+            res.intCheckers.Clear();
+            res.intCheckers.Add(0);
+        }
+        else
+        {
+            res.intCheckers.RemoveRange(0, numberAfterDot);
+        }
         res.intCheckers.Reverse();
         res.floatCheckers.Reverse();
         res.UpdateBigNumber();
-        return res; 
+        return res;
     }
 
     public static UBigNumber operator /(UBigNumber bigNumber1, UBigNumber bigNumber2)
     {
-        if (bigNumber1 < bigNumber2)
-        {
-            return new UBigNumber("0");
-        }
-        else if (bigNumber1 == bigNumber2)
+        if (bigNumber1 == bigNumber2)
         {
             return new UBigNumber("1");
         }
 
-        UBigNumber num1 = new UBigNumber(bigNumber1.GetIntPart().ToString());
-        UBigNumber num2 = new UBigNumber(bigNumber2.GetIntPart().ToString());
+        UBigNumber num1 = new UBigNumber(bigNumber1.ToString());
+        UBigNumber num2 = new UBigNumber(bigNumber2.ToString());
         UBigNumber res = new UBigNumber();
         UBigNumber temp = new UBigNumber();
 
+        for (int i = 0; i <= Math.Max(num1.floatCheckers.Count, num2.floatCheckers.Count); i++)
+        {
+            num1 *= ConvertToBigNumber(10);
+            num2 *= ConvertToBigNumber(10);
+            num1.UpdateBigNumber();
+            num2.UpdateBigNumber();
+        }
 
         for (int i = 0; i < num1.intCheckers.Count; i++)
         {
@@ -271,6 +296,44 @@ public class UBigNumber
                     temp -= num2;
                 }
                 res.intCheckers.Add(j);
+            }
+            if (temp != ConvertToBigNumber(0) && i + 1 >= num1.intCheckers.Count)
+            {
+                if (res.intCheckers.Count == 0)
+                {
+                    res.intCheckers.Add(0);
+                }
+                for (int j = 0; j < 10; j++)
+                {
+                    downNums = 0;
+                    if (temp == ConvertToBigNumber(0))
+                    {
+                        break;
+                    }
+                    while (temp < num2)
+                    {
+                        downNums++;
+                        temp.intCheckers.Add(0);
+                        if (temp < num2)
+                        {
+                            j++;
+                        }
+                        if (downNums >= 2)
+                        {
+                            res.floatCheckers.Add(0);
+                        }
+                    }
+                    if (temp >= num2)
+                    {
+                        int k = 0;
+                        while (temp >= num2)
+                        {
+                            k++;
+                            temp -= num2;
+                        }
+                        res.floatCheckers.Add(k);
+                    }
+                }
             }
             if (temp == new UBigNumber("0") && temp.intCheckers.Count >= 2)
             {
@@ -506,7 +569,7 @@ public class UBigNumber
         floatCheckers.Reverse();
     }
 
-    public override string ToString()
+    public override string ToString()// ћетод, который возвращает значение большого числа в виде строки
     {
         string res = "";
         for (int i = 0; i < this.intCheckers.Count; i++)
@@ -524,9 +587,9 @@ public class UBigNumber
         return res;
     }
 
-    public int GetNumByIndex(int i) => intCheckers[i];
+    public int GetNumByIndex(int i) => intCheckers[i];// ћетод, который возвращает целочисленную часть числа по индексу
 
-    public static UBigNumber ConvertToBigNumber<T>(T num)
+    public static UBigNumber ConvertToBigNumber<T>(T num)// ћетод, который преобразует число в большое целое число с плавающей точкой
     {
         try
         {
@@ -538,7 +601,7 @@ public class UBigNumber
         }
     }
 
-    public UBigNumber GetFloatPart()
+    public UBigNumber GetFloatPart()// ћетод, который возвращает часть числа с плавающей точкой
     {
         UBigNumber res = new UBigNumber();
         for (int i = 0; i < floatCheckers.Count; i++)
@@ -548,7 +611,7 @@ public class UBigNumber
         return res;
     }
 
-    public UBigNumber GetIntPart()
+    public UBigNumber GetIntPart()// ћетод, который возвращает целую часть числа
     {
         UBigNumber res = new UBigNumber();
         for (int i = 0; i < intCheckers.Count; i++)
@@ -558,7 +621,7 @@ public class UBigNumber
         return res;
     }
 
-    public UBigNumber FromPercentToNum()
+    public UBigNumber FromPercentToNum()// ћетод, который преобразует процентное значение в число
     {
         UBigNumber num = new UBigNumber(this.ToString());
         if (num.intCheckers.Count - 1 >= 0)
@@ -599,4 +662,102 @@ public class UBigNumber
         return num;
     }
 
+    public static UBigNumber IntPow(UBigNumber bigNumber, int power)// ћетод, который возвращает результат возведени€ числа в степень(целую)
+    {
+        UBigNumber res = new UBigNumber("1");
+        for (int i = 0; i < Math.Abs(power); i++)
+        {
+            res *= bigNumber;
+        }
+        if (power < 0)
+        {
+            return ConvertToBigNumber(1) / res;
+        }
+        else
+        {
+            return res;
+        }
+    }
+
+    public static UBigNumber Ln(UBigNumber bigNumber)// ћетод, который возвращает натуральный логарифм числа
+    {
+        UBigNumber res = new UBigNumber(((bigNumber - ConvertToBigNumber(1)) / (bigNumber + ConvertToBigNumber(1))).ToString());
+        for (int i = 3; i < 10; i += 2)
+        {
+            res += IntPow((bigNumber - ConvertToBigNumber(1)) / (bigNumber + ConvertToBigNumber(1)), i) / (ConvertToBigNumber(i));
+        }
+        return ConvertToBigNumber(2) * res;
+    }
+
+    public static UBigNumber Pow(UBigNumber bigNumber, float power)// ћетод, который возвращает результат возведени€ числа в степень
+    {
+        UBigNumber res = new UBigNumber("1");
+        for (int i = 1; i < 10; i++)
+        {
+            res += IntPow(Ln(bigNumber), i) / (Fac(ConvertToBigNumber(i))) * IntPow(ConvertToBigNumber(power), i);
+        }
+        return res;
+    }
+
+    public static UBigNumber Fac(UBigNumber bigNumber)
+    {
+        UBigNumber num = new UBigNumber(bigNumber.ToString());
+        UBigNumber res = new UBigNumber("1");
+        while (num > ConvertToBigNumber(1))
+        {
+            res *= num;
+            num--;
+        }
+        return res;
+    }
+
+    public string BeautifulString()
+    {
+        string res="";
+        if (intCheckers.Count <= 3)
+        {
+            res = ToString();
+        }
+        if (this > IntPow(ConvertToBigNumber(10), 3) && this < IntPow(ConvertToBigNumber(10), 6))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 3);
+            res += symbols[1];
+        }
+        else if(this > IntPow(ConvertToBigNumber(10), 6) && this < IntPow(ConvertToBigNumber(10), 9))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 6);
+            res += symbols[2];
+        }
+        else if (this > IntPow(ConvertToBigNumber(10), 9) && this < IntPow(ConvertToBigNumber(10), 12))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 9);
+            res += symbols[3];
+        }
+        else if (this > IntPow(ConvertToBigNumber(10), 12) && this < IntPow(ConvertToBigNumber(10), 15))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 12);
+            res += symbols[4];
+        }
+        else if (this > IntPow(ConvertToBigNumber(10), 15) && this < IntPow(ConvertToBigNumber(10), 18))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 15);
+            res += symbols[5];
+        }
+        else if (this > IntPow(ConvertToBigNumber(10), 18) && this < IntPow(ConvertToBigNumber(10), 21))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 18);
+            res += symbols[6];
+        }
+        else if (this > IntPow(ConvertToBigNumber(10), 21) && this < IntPow(ConvertToBigNumber(10), 24))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 21);
+            res += symbols[7];
+        }
+        else if (this > IntPow(ConvertToBigNumber(10), 24) && this < IntPow(ConvertToBigNumber(10), 27))
+        {
+            res += this / IntPow(ConvertToBigNumber(10), 24);
+            res += symbols[8];
+        }
+        return res;
+    }
 }

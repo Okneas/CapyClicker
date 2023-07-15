@@ -7,74 +7,110 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public UBigNumber capyPoints = new UBigNumber("0");
-    public UBigNumber capyPointsPerSecond = new UBigNumber("0");
-    public UBigNumber capyPointsPerTap = new UBigNumber("1");
+    // Свойства для хранения значений переменных
+    public UBigNumber capyPoints = new UBigNumber("0"); // количество капидолларов
+    public UBigNumber AllCapyPointsPerRun = new UBigNumber("0"); // общее количество капидолларов за все игры
+    public UBigNumber maxCapyDollars = new UBigNumber("0"); // максимальное количество капидолларов, которое можно получить за один раз
+    public UBigNumber capyPointsPerSecond = new UBigNumber("0"); // количество капидолларов, получаемое за каждую секунду
+    public UBigNumber capyPointsPerTap = new UBigNumber("1"); // количество капидолларов, получаемое за каждый нажатие на кнопку
 
-    public Text textCapyPoints;
-    public Text textCapyPointsPerSecond;
-    public Text AllAnotherStats;
+    public UBigNumber goldenCapy = new UBigNumber("0"); // количество золотых капибар
+    public UBigNumber profitOfgoldenCapy = new UBigNumber("1");
+    public UBigNumber goldenCapyOnThisRun = new UBigNumber("0"); // количество золотых капибар, полученных на этой итерации
+    public UBigNumber capyDollarsForGoldenCapy = new UBigNumber("1000000000"); // количество капидолларов, необходимое для получения золотой капибары
 
-    public int countOfBabyCapyUpgrades;
-    public int countOfZooUpgrades;
-    public int countOfNatureUpgrades;
-    public int countOfLabUpgrades;
-    public int countOfGodUpgrades;
-    public int countOfMultiverseUpgrades;
+    public Text textCapyPoints; // компонент текста для отображения количества капидолларов
+    public Text textCapyPointsPerSecond; // компонент текста для отображения количества капидолларов, получаемое за каждую секунду
+    public Text textGoldenCapyOnThisRun; // компонент текста для отображения количества золотых капибар
+    public Text textAllGoldenCapy;
 
-    public UBigNumber capyPointsPerSecondBabyCapy;
-    public UBigNumber capyPointsPerSecondZoo;
-    public UBigNumber capyPointsPerSecondNature;
-    public UBigNumber capyPointsPerSecondLab;
-    public UBigNumber capyPointsPerSecondGod;
-    public UBigNumber capyPointsPerSecondMultiverse;
+    public int maxConditionsForUpgrades = 50; // максимальное количество условий для улучшений
 
-    public List<Upgrades> AllUpgrades;
+    public int countOfBabyCapyUpgrades; // количество улучшений "ребенка"
+    public int countOfZooUpgrades; // количество улучшений "зоопарка"
+    public int countOfNatureUpgrades; // количество улучшений "природа"
+    public int countOfLabUpgrades; // количество улучшений "лаборатория"
+    public int countOfGodUpgrades; // количество улучшений "бог"
+    public int countOfMultiverseUpgrades; // количество улучшений "мультиверсия"
 
-    public GameObject[] upgradesSlots;
+    public UBigNumber capyPointsPerSecondBabyCapy; // количество капидолларов, получаемое за каждую секунду при улучшении "ребенка"
+    public UBigNumber capyPointsPerSecondZoo; // количество капиткапидолларовул, получаемое за каждую секунду при улучшении "зоопарка"
+    public UBigNumber capyPointsPerSecondNature; // количество капидолларов, получаемое за каждую секунду при улучшении "природа"
+    public UBigNumber capyPointsPerSecondLab; // количество капидолларов, получаемое за каждую секунду при улучшении "лаборатория"
+    public UBigNumber capyPointsPerSecondGod; // количество капидолларов, получаемое за каждую секунду при улучшении "бог"
+    public UBigNumber capyPointsPerSecondMultiverse; // количество капидолларов, получаемое за каждую секунду при улучшении "мультиверсия"
 
-    public UBigNumber percentAll = new UBigNumber("0");
-    public UBigNumber percentBabyCapy = new UBigNumber("0");
-    public UBigNumber percentZoo = new UBigNumber("0");
-    public UBigNumber percentNature = new UBigNumber("0");
-    public UBigNumber percentLab = new UBigNumber("0");
-    public UBigNumber percentGod = new UBigNumber("0");
-    public UBigNumber percentMultiverse = new UBigNumber("0");
-    public UBigNumber percentTap = new UBigNumber("100");
-    public UBigNumber percentTapFromAll = new UBigNumber("0");
+    public List<Upgrades> AllUpgrades; // список всех улучшений
+    public List<PrestigeUpgrade> PrestigeAllUpgradesObtained;
+    public List<PrestigeUpgrade> AllPrestigeUpgrades;
 
-    private void Start()
+    public List<UpgradeButton> upgradesSlots; // список кнопок улучшений
+
+    public UBigNumber percentAll = new UBigNumber("0");// процент "все"
+    public UBigNumber percentBabyCapy = new UBigNumber("0"); // процент "ребенка"
+    public UBigNumber percentZoo = new UBigNumber("0"); // процент  "зоопарка"
+    public UBigNumber percentNature = new UBigNumber("0"); // процент  "природа"
+    public UBigNumber percentLab = new UBigNumber("0"); // процент  "лаборатория"
+    public UBigNumber percentGod = new UBigNumber("0"); // процент  "бог"
+    public UBigNumber percentMultiverse = new UBigNumber("0"); // процент  "мультивселенная"
+    public UBigNumber percentTap = new UBigNumber("100"); // процент для капидолларов, получаемый за каждый нажатие на кнопку
+    public UBigNumber percentTapFromAll = new UBigNumber("0"); // процент капидолларов, получаемый за каждый нажатие на кнопку, если все улучшения включены
+
+    // Метод, который вызывается при запуске игры
+    private void Awake()
     {
-        upgradesSlots = GameObject.FindGameObjectsWithTag("Upgrade");
+        foreach (PrestigeUpgrade i in AllPrestigeUpgrades)
+        {
+            i.CheckConditions();
+        }
+        // Включение улучшений в зависимости от их условий
+        for (int i = 0; i < AllUpgrades.Count; i++)
+        {
+            AllUpgrades[i].alreadySet = false;
+            AllUpgrades[i].active = false;
+            if (AllUpgrades[i].condition <= maxConditionsForUpgrades)
+            {
+                AllUpgrades[i].active = true;
+            }
+        }
+        GameObject upgradePanel;
+        // Поиск панели улучшений и добавление в список кнопок улучшений
+        upgradePanel = GameObject.FindGameObjectWithTag("Upgrade");
+        for (int i = 0; i < GameObject.FindGameObjectWithTag("Upgrade").transform.childCount; i++)
+        {
+           upgradesSlots.Add(upgradePanel.transform.GetChild(i).GetComponent<UpgradeButton>());
+        }
     }
 
+    // Метод, который вызывается каждый кадр
     private void Update()
     {
-        textCapyPoints.text = $"{capyPoints} CapyDollars";
-        textCapyPointsPerSecond.text = $"{capyPointsPerSecond} CapyDollars Per Second";
-    }
+        // Увеличение количества золотых капибар на этой итерации, если достигнута определенная сумма
+        if (AllCapyPointsPerRun > UBigNumber.IntPow(goldenCapyOnThisRun + UBigNumber.ConvertToBigNumber(1), 3) * UBigNumber.ConvertToBigNumber(1000000))
+        {
+            goldenCapyOnThisRun++;
+        }
+        // Обновление текстовых компонентов на экране
+        textCapyPoints.text = $"{capyPoints.BeautifulString()} CapyDollars";
+        textCapyPointsPerSecond.text = $"{capyPointsPerSecond.BeautifulString()} CapyDollars Per Second";
+        textGoldenCapyOnThisRun.text = $"+{goldenCapyOnThisRun.BeautifulString()} Golden Capy's On Prestige";
+        textAllGoldenCapy.text = $"{goldenCapy.BeautifulString()} all Golden Capy's";
 
+    }
+    // Метод, который устанавливает улучшение
     public void SetUpgrade(Upgrades upgrade)
     {
-        foreach (GameObject i in upgradesSlots)
+        foreach (UpgradeButton i in upgradesSlots)
         {
-            if(!i.GetComponent<UpgradeButton>().fill)
+            if(!i.fill)
             {
-                i.GetComponent<UpgradeButton>().SetUpgrade(upgrade);
-                if (i.GetComponent<UpgradeButton>().upgrade.icon != null)
-                {
-                    i.GetComponent<Image>().sprite = i.GetComponent<UpgradeButton>().upgrade.icon;
-                }
-                else
-                {
-                    i.GetComponent<Image>().color = Color.blue;
-                }
-                AllUpgrades.Remove(upgrade);
+                i.SetUpgrade(upgrade);
                 break;
             }
         }
     }
 
+    // Метод, который обновляет статистику
     public void UpdateStatistic()
     {
         countOfBabyCapyUpgrades = GameObject.FindGameObjectWithTag("Baby Capy").GetComponent<ItemButton>().idleItem.count;
@@ -91,7 +127,8 @@ public class Player : MonoBehaviour
         capyPointsPerSecondGod = percentGod.FromPercentToNum() * UBigNumber.ConvertToBigNumber((countOfGodUpgrades-1) * 1000) + UBigNumber.ConvertToBigNumber((countOfGodUpgrades-1) * 1000);
         capyPointsPerSecondMultiverse = percentMultiverse.FromPercentToNum() * UBigNumber.ConvertToBigNumber((countOfMultiverseUpgrades-1) * 5000) + UBigNumber.ConvertToBigNumber((countOfMultiverseUpgrades-1) * 5000);
 
-        capyPointsPerSecond = percentAll.FromPercentToNum() * (capyPointsPerSecondBabyCapy + capyPointsPerSecondZoo + capyPointsPerSecondNature +
+        capyPointsPerSecond = ((goldenCapy*profitOfgoldenCapy)/UBigNumber.ConvertToBigNumber(100))*(capyPointsPerSecondBabyCapy + capyPointsPerSecondZoo + capyPointsPerSecondNature +
+            capyPointsPerSecondLab + capyPointsPerSecondGod + capyPointsPerSecondMultiverse) + percentAll.FromPercentToNum() * (capyPointsPerSecondBabyCapy + capyPointsPerSecondZoo + capyPointsPerSecondNature +
             capyPointsPerSecondLab + capyPointsPerSecondGod + capyPointsPerSecondMultiverse) + (capyPointsPerSecondBabyCapy + capyPointsPerSecondZoo + capyPointsPerSecondNature +
             capyPointsPerSecondLab + capyPointsPerSecondGod + capyPointsPerSecondMultiverse);
 

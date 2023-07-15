@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\u042D\u043A\u0441\u043F\u043B\u0443\u0430\u0442\u0430\u0446\u0438\u044F
     \u043D\u043E\u0432\u044B\u0445 \u043C\u0438\u0440\u043E\u0432"
   m_EditorClassIdentifier: 
+  id: 11
   icon: {fileID: 21300000, guid: 00b893ce435fdb94a8c4a0f25d481849, type: 3}
   stringPrice: 100000000
   condition: 50
@@ -21,3 +22,4 @@ MonoBehaviour:
   stringEffectOnCapyPerSec: 100
   stringEffectOnCapyPerSecOnItem: 100
   itemType: 5
+  active: 1

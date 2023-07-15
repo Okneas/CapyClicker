@@ -11,18 +11,19 @@ public enum ItemType
     Nature,
     Lab,
     God,
-    MultiUniverse
+    MultiUniverse,
+    Prestige
 }
 
 public abstract class IdleItems
 {
-    public Image image;
-    public string name;
-    public UBigNumber baseCost;
-    public UBigNumber cost;
-    public UBigNumber capyDollarsPerSecond;
-    public int count;
-    public Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    public Image image; // изображение предмета
+    public string name; // название предмета
+    public UBigNumber baseCost; // базовая стоимость предмета
+    public UBigNumber cost; // текущая стоимость предмета
+    public UBigNumber capyDollarsPerSecond; // количество капитул, получаемое за секунду
+    public int count; // количество предметов, которое было куплено
+    public Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>(); // ссылка на компонент Player
 
     public IdleItems(string name, string price, UBigNumber cdps)
     {
@@ -33,6 +34,7 @@ public abstract class IdleItems
         this.count = 1;
     }
 
+    // Метод, который изменяет стоимость предмета при каждом покупке
     public void PriceChange()
     {
         this.count++;

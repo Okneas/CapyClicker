@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1f762dccc36d64ebfcae97eb3c32ac, type: 3}
   m_Name: "\u041F\u0435\u0440\u0435\u0434\u043E\u0432\u044B\u0435 \u0443\u0447\u0451\u043D\u044B\u0435"
   m_EditorClassIdentifier: 
+  id: 7
   icon: {fileID: 21300000, guid: 11a6a43c11bed514392cc89b8b858ac8, type: 3}
   stringPrice: 250000
   condition: 10
@@ -20,3 +21,4 @@ MonoBehaviour:
   stringEffectOnCapyPerSec: 30
   stringEffectOnCapyPerSecOnItem: 50
   itemType: 3
+  active: 1
